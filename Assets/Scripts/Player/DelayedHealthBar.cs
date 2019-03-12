@@ -9,6 +9,7 @@ public class DelayedHealthBar : MonoBehaviour
     public float maxHealth;
     public float curHealth;
     public float delayHealth;
+    public float speed;
 
     //Speed in which health drops
     //refernces to foreground curHealthSlider (fill)
@@ -17,6 +18,20 @@ public class DelayedHealthBar : MonoBehaviour
     public Slider delayHealthSlider;
     public Image delayHealthfill;
 
+    private void Update()
+    {
+        delayHealthSlider.value = Mathf.Clamp01(curHealth / maxHealth);
+        if(delayHealth > curHealth)
+        {
+            delayHealth -= Time.deltaTime * speed;
+        }
+        delayHealthSlider.value = Mathf.Clamp01(delayHealth / maxHealth);
+    }
+
+    void ManageHealthBar()
+    {
+
+    }
     //Health slider value updates when current health changes but needs to stay between 0 an Max
     //if our delay health is going to be less than our current health we need to bring the health down by speed over time (same for increase)
     //delay sliders value to be set to the delay health amount between its min and max
