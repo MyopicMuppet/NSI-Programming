@@ -52,6 +52,8 @@ public class CheckPoint : MonoBehaviour
         //if our other objects tag when compared is CheckPoint
         if (other.gameObject.CompareTag("CheckPoint"))
         {
+
+            //our checkpoint is equal to the other objects transform
             curCheckPoint = other.transform;
             //save our SpawnPoint as the name of the check point or float x,y,z
             Player player = this.GetComponent<Player>();
