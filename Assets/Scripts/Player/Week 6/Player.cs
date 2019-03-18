@@ -10,13 +10,18 @@ public class Player : MonoBehaviour
     public int level;
     public new string name;
     public float maxHealth, curHealth;
+    public float x, y, z;
     public HealthBar health;
+    public CheckPoint checkPoint;
     #endregion
 
     public void SaveFunction()
     {
         maxHealth = health.maxHealth;
         curHealth = health.curHealth;
+        x = checkPoint.curCheckPoint.position.x;
+        y = checkPoint.curCheckPoint.position.y;
+        z = checkPoint.curCheckPoint.position.z;
         Save.SaveData(this);
     }
 
@@ -30,7 +35,11 @@ public class Player : MonoBehaviour
         health.curHealth = curHealth;
         maxHealth = data.maxHP;
         health.maxHealth = maxHealth;
-
+        x = data.x;
+        y = data.y;
+        z = data.z;
+        this.transform.position = new Vector3(x, y, z);
+       
 
       
     }
@@ -45,6 +54,10 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F12))
         {
             SaveFunction();
+        }
+        if (Input.GetKeyDown(KeyCode.F11))
+        {
+            LoadData();
         }
     }
 }
