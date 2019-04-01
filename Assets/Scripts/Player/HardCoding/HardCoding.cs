@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HardCoding : MonoBehaviour {
+public class HardCoding : MonoBehaviour
+{/*
     public float scrW, scrH;
     private void OnGUI()
     {
@@ -18,5 +19,5 @@ public class HardCoding : MonoBehaviour {
                 GUI.Box(new Rect(scrW * x, scrH * y, scrW, scrH),"");
             }
         }
-    }
+    }*/
 }
