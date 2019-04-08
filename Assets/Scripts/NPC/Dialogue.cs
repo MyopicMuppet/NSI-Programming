@@ -59,6 +59,8 @@ public class Dialogue : MonoBehaviour
                         showDlg = false;
                         Cursor.lockState = CursorLockMode.Locked;
                         Cursor.visible = false;
+                    Movement.canMove = true;
+
                     }
                 
             }

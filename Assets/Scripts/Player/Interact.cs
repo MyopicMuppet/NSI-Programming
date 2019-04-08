@@ -5,11 +5,8 @@ using System.Collections;
 public class Interact : MonoBehaviour
 {
     #region Variables
-    //We are setting up these variable and the tags in update for week 3,4 and 5
-    [Header("Player and Camera connection")]
-    //create two gameobject variables one called player and the other mainCam
-    public GameObject player;
-    public GameObject mainCamera;
+
+
 
     #endregion
     #region Start
@@ -38,6 +35,15 @@ public class Interact : MonoBehaviour
                 //and that hits info is tagged NPC
                 if (hitInfo.collider.CompareTag("NPC"))
                 {
+
+                    Dialogue dlg = hitInfo.transform.GetComponent<Dialogue>();
+                    if (dlg != null)
+                     {
+                        dlg.showDlg = true;
+                        Movement.canMove = false;
+                        Cursor.lockState = CursorLockMode.None;
+                        Cursor.visible = true;
+                    }
                     //Debug that we hit a NPC
                     Debug.Log("NPC");
                 }

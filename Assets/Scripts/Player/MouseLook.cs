@@ -42,43 +42,46 @@ public class MouseLook : MonoBehaviour
     #region Update
     private void Update()
     {
-        #region Mouse X and Y
-        //if our axis is set to Mouse X and Y
-        if (axis == RotationalAxis.MouseXandY)
+        if (Movement.canMove)
         {
-            //float rotation x is equal to our y axis plus the mouse input on the Mouse X times our x sensitivity 
-            float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
-            //our rotation Y is plus equals our mouse input for Mouse Y times Y sensitivity
-            rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-            //the rotation Y is clamped using Mathf and we are clamping the y rotation to the Y min and Y max
-            rotationY = Mathf.Clamp(rotationY, minY, maxY);
-            //transform our local position to the nex vector3 rotaion - y rotaion on the x axis and x rotation on the y axis
-            transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
-        }
+            #region Mouse X and Y
+            //if our axis is set to Mouse X and Y
+            if (axis == RotationalAxis.MouseXandY)
+            {
+                //float rotation x is equal to our y axis plus the mouse input on the Mouse X times our x sensitivity 
+                float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
+                //our rotation Y is plus equals our mouse input for Mouse Y times Y sensitivity
+                rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+                //the rotation Y is clamped using Mathf and we are clamping the y rotation to the Y min and Y max
+                rotationY = Mathf.Clamp(rotationY, minY, maxY);
+                //transform our local position to the nex vector3 rotaion - y rotaion on the x axis and x rotation on the y axis
+                transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
+            }
 
-        #endregion
-        #region Mouse X
-        else if (axis == RotationalAxis.MouseX)
-        {
-            //else if we are rotating on the X
+            #endregion
+            #region Mouse X
+            else if (axis == RotationalAxis.MouseX)
+            {
+                //else if we are rotating on the X
 
-            //transform the rotation on our game objects Y by our Mouse input Mouse X times X sensitivity
-            //x                y                          z
-            transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+                //transform the rotation on our game objects Y by our Mouse input Mouse X times X sensitivity
+                //x                y                          z
+                transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+            }
+            #endregion
+            #region Mouse Y
+            //else we are only rotation on the Y
+            else
+            {
+                //our rotation Y is pulse equals  our mouse input for Mouse Y times Y sensitivity
+                rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
+                //the rotation Y is clamped using Mathf and we are clamping the y rotation to the Y min and Y max
+                rotationY = Mathf.Clamp(rotationY, minY, maxY);
+                //transform our local position to the nex vector3 rotaion - y rotaion on the x axis and local euler angle Y on the y axis
+                transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
+            }
+            #endregion
         }
-        #endregion
-        #region Mouse Y
-        //else we are only rotation on the Y
-        else
-        {
-            //our rotation Y is pulse equals  our mouse input for Mouse Y times Y sensitivity
-            rotationY += Input.GetAxis("Mouse Y") * sensitivityY;
-            //the rotation Y is clamped using Mathf and we are clamping the y rotation to the Y min and Y max
-            rotationY = Mathf.Clamp(rotationY, minY, maxY);
-            //transform our local position to the nex vector3 rotaion - y rotaion on the x axis and local euler angle Y on the y axis
-            transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
-        }
-        #endregion
 
     }
 
