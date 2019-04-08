@@ -25,6 +25,8 @@ public class QuestGiver : MonoBehaviour
 
     public void OpenQuestWindow()
     {
+        uI.questWindow.SetActive(true);
+
         uI.nameText.text = quest.name;
         uI.descriptionText.text = quest.name;
         uI.experienceText.text = quest.name;
