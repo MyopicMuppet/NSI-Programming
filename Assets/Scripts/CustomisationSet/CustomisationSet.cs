@@ -353,7 +353,7 @@ public class CustomisationSet : MonoBehaviour
             }
             ChooseClass(selectedIndex);
         }
-        i++;
+
         GUI.Box(new Rect(3.75f * scrW, scrH + i * (0.5f * scrH), 2 * scrW, 0.5f * scrH), selectedClass[selectedIndex]);
 
         if (GUI.Button(new Rect(5.75f * scrW, scrH + i * (0.5f * scrH), 0.5f * scrW, 0.5f * scrH), ">"))
@@ -365,7 +365,9 @@ public class CustomisationSet : MonoBehaviour
             }
             ChooseClass(selectedIndex);
         }
+       
         GUI.Box(new Rect(3.75f * scrW, 2f * scrH, 2f * scrW, 0.5f * scrH), "Points: " + points);
+        i++;
         for (int s = 0; s < 6; s++)
         {
             if (points > 0)
@@ -376,6 +378,7 @@ public class CustomisationSet : MonoBehaviour
                     tempStats[s]++;
                 }
             }
+        
             GUI.Box(new Rect(3.75f * scrW, 2.5f * scrH + s * (0.5f * scrH), 2f * scrW, 0.5f * scrH), statArray[s] + ": " + (tempStats[s] + stats[s]));
             if (points < 10 && tempStats[s] > 0)
             {
