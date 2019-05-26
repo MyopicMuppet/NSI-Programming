@@ -235,7 +235,7 @@ public class CustomisationSet : MonoBehaviour
     #region Save
     void Save()
     {
-
+        SaveSystem.SavePlayer(this);
     }
     #endregion
 
