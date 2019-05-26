@@ -339,6 +339,7 @@ public class CustomisationSet : MonoBehaviour
         {
             Save();
             SceneManager.LoadScene(2);
+            PlayerData data = SaveSystem.LoadPlayer();
         }
         i = 0;
         GUI.Box(new Rect(3.75f * scrW, scrH + i * (0.5f * scrH), 2 * scrW, 0.5f * scrH), "Class");
