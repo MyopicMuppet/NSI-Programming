@@ -40,12 +40,12 @@ public class PlayerData
         charName = set.charName;
 
         stats = new int[6];
-        stats[0] = set.stats[0];
-        stats[1] = set.stats[1];
-        stats[2] = set.stats[2];
-        stats[3] = set.stats[3];
-        stats[4] = set.stats[4];
-        stats[5] = set.stats[5];
+        stats[0] = set.stats[0] + set.tempStats[0];
+        stats[1] = set.stats[1] + set.tempStats[1];
+        stats[2] = set.stats[2] + set.tempStats[2];
+        stats[3] = set.stats[3] + set.tempStats[3];
+        stats[4] = set.stats[4] + set.tempStats[4];
+        stats[5] = set.stats[5] + set.tempStats[5];
 
         CharacterClass characterClass = set.characterClass;
     }
